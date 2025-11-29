@@ -3,9 +3,12 @@ torchvision
 numpy
 pandas
 matplotlib
+seaborn
+pillow
 onnx
 onnxruntime
 opencv-python
 scikit-learn
 tqdm
+kagglehub
 
