@@ -47,6 +47,8 @@ We're really proud of what we achieved with this project:
 - **Balanced Learning**: We handled the imbalanced dataset with weighted loss functions
 - **Test-Time Augmentation**: We used ensemble predictions to boost accuracy
 - **Ready for Deployment**: We exported our model to ONNX format for mobile/edge devices
+- **Real-time Detection**: We built a webcam application for live emotion recognition 🎥 **NEW!**
+- **Batch Processing**: Process multiple images efficiently
 - **Comprehensive Analysis**: We generated confusion matrices, classification reports, and training curves
 - **Smart Training**: We implemented early stopping to prevent overfitting
 - **Adaptive Learning**: We used learning rate scheduling for better convergence
@@ -301,6 +303,63 @@ plt.show()
 
 print(f"We detected: {emotions[prediction]} ({probabilities[prediction]*100:.1f}% confident)")
 ```
+
+### Using Real-Time Webcam Detection 🎥 **NEW!**
+
+We created a real-time emotion detector that uses your webcam!
+
+```bash
+cd src
+python webcam_detector.py --model ../best_fer_resnet18.pth
+```
+
+**Interactive Controls:**
+- Press `q` - Quit the application
+- Press `s` - Toggle probability bars on/off
+- Press `f` - Toggle FPS display on/off
+
+**Features:**
+- ✅ Real-time face detection using Haar Cascades
+- ✅ Live emotion classification with confidence scores
+- ✅ Visual probability bars for all 7 emotions
+- ✅ FPS counter for performance monitoring
+- ✅ Mirror mode for natural selfie experience
+- ✅ Supports multiple faces simultaneously
+
+**Command-line options:**
+```bash
+# Use a different camera (e.g., external webcam)
+python webcam_detector.py --camera 1
+
+# Force CPU usage (if you don't have GPU)
+python webcam_detector.py --cpu
+
+# Custom model path
+python webcam_detector.py --model /path/to/your/model.pth
+```
+
+### Processing Images from Files 📸 **NEW!**
+
+Process single images or batch process entire folders:
+
+**Single Image:**
+```bash
+cd src
+python image_detector.py --model ../best_fer_resnet18.pth --image photo.jpg
+```
+
+**Batch Process Folder:**
+```bash
+python image_detector.py --model ../best_fer_resnet18.pth --folder ./photos --output ./results
+```
+
+This will:
+- Detect all faces in each image
+- Annotate images with emotion predictions
+- Save results to the output folder
+- Generate a summary report
+
+**Example Output:**
 ```
 
 ## Our Results
