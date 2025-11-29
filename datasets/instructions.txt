@@ -1,0 +1,118 @@
+==============================================================================
+                    FER 2013 DATASET - KAGGLE INSTRUCTIONS
+==============================================================================
+
+OVERVIEW:
+The FER 2013 (Facial Expression Recognition 2013) dataset contains 35,887 
+grayscale images (48x48 pixels) of faces labeled with one of 7 emotions:
+0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Neutral, 5=Sad, 6=Surprise
+
+==============================================================================
+                            SETUP REQUIREMENTS
+==============================================================================
+
+1. CREATE KAGGLE API ACCOUNT:
+   - Visit: https://www.kaggle.com/
+   - Sign up or log in to your account
+   - Go to Account settings -> Create New API Token
+   - This downloads kaggle.json to your downloads folder
+
+2. INSTALL KAGGLE CLI:
+   pip install kaggle
+
+3. CONFIGURE KAGGLE CREDENTIALS:
+   - Windows: Move kaggle.json to: C:\Users\<YourUsername>\.kaggle\
+   - Linux/Mac: Move kaggle.json to: ~/.kaggle/
+   - Set permissions (Linux/Mac): chmod 600 ~/.kaggle/kaggle.json
+
+==============================================================================
+                         DOWNLOAD INSTRUCTIONS
+==============================================================================
+
+1. NAVIGATE TO THE DATASETS DIRECTORY:
+   cd machine_learning/datasets
+
+2. DOWNLOAD THE FER 2013 DATASET:
+   kaggle datasets download -d deadskull7/fer2013
+
+3. EXTRACT THE ARCHIVE:
+   - Windows (PowerShell):
+     Expand-Archive fer2013.zip
+   
+   - Windows (Command Prompt):
+     tar -xf fer2013.zip
+   
+   - Linux/Mac:
+     unzip fer2013.zip
+
+4. VERIFY DOWNLOAD:
+   The extracted folder should contain:
+   - fer2013.csv (main dataset file)
+   - icml_face_data.csv (alternative format, optional)
+   - README or LICENSE files
+
+==============================================================================
+                          DATASET STRUCTURE
+==============================================================================
+
+The fer2013.csv file contains:
+- Column 1: emotion (0-6, integer labels)
+- Column 2: pixels (space-separated grayscale values 0-255)
+- Column 3: Usage (Training/PublicTest/PrivateTest split)
+
+Example loading with Python:
+    import pandas as pd
+    import numpy as np
+    
+    df = pd.read_csv('fer2013.csv')
+    
+    # Extract emotions and pixel data
+    emotion = df['emotion']
+    pixels = df['pixels'].str.split(' ').apply(lambda x: np.array(x, dtype=int))
+    
+    # Reshape to 48x48 images
+    images = np.array([p.reshape(48, 48) for p in pixels])
+
+==============================================================================
+                          QUICK START GUIDE
+==============================================================================
+
+1. Create a Python script in src/ to load the data:
+   from src.data_loader import load_fer2013
+   
+   train_images, train_labels = load_fer2013(split='Training')
+
+2. Preprocess images:
+   - Normalize pixel values to [0, 1] range
+   - Apply data augmentation if needed (rotation, shifts, etc.)
+   - Consider handling imbalanced emotion classes
+
+3. Train your model using the training split and validate on test splits
+
+==============================================================================
+                          TROUBLESHOOTING
+==============================================================================
+
+Issue: "Kaggle.json not found"
+Solution: Ensure kaggle.json is in the correct .kaggle directory
+
+Issue: "Permission denied" (Linux/Mac)
+Solution: chmod 600 ~/.kaggle/kaggle.json
+
+Issue: Download fails
+Solution: 
+   - Check internet connection
+   - Verify Kaggle credentials are valid
+   - Try: kaggle datasets download -d deadskull7/fer2013 --force
+
+Issue: CSV parsing errors
+Solution: Ensure pandas and numpy are installed:
+   pip install pandas numpy scikit-image
+
+==============================================================================
+                          REFERENCES
+==============================================================================
+
+- Kaggle Dataset: https://www.kaggle.com/datasets/deadskull7/fer2013
+- FER 2013 Paper: https://arxiv.org/abs/1308.5149
+- Kaggle API Documentation: https://www.kaggle.com/docs/api
