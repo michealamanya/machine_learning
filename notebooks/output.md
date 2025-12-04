@@ -4,8 +4,6 @@
 
 This report analyzes the training and performance of a ResNet-18 based facial expression recognition model trained on the FER2013 dataset. The model achieved a **64.70% test accuracy** with Test-Time Augmentation, demonstrating strong performance on emotion classification.
 
----
-
 ## 1. Dataset Overview
 
 ### FER2013 Dataset Characteristics
@@ -34,8 +32,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 
 **Key Observation:** Severe class imbalance exists, with "Happy" being 16.5× more frequent than "Disgust". This necessitated weighted loss functions to prevent bias toward majority classes.
 
----
-
 ## 2. Model Architecture
 
 ### Base Architecture
@@ -62,8 +58,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 - Color jitter
 - Random erasing
 - **Test-Time Augmentation (TTA):** 5 augmented versions averaged
-
----
 
 ## 3. Training Performance Analysis
 
@@ -103,8 +97,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 **Learning Rate Impact:**
 - Each LR reduction produced 2-4% validation accuracy gains
 - Aggressive LR decay enabled fine-grained optimization
-
----
 
 ## 4. Test Set Performance
 
@@ -172,8 +164,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 - Often misclassified as surprise or neutral
 - Subtle differences in eyebrow position difficult to capture at 48×48 resolution
 
----
-
 ## 5. Performance Metrics Deep Dive
 
 ### Macro vs Weighted Averages
@@ -196,7 +186,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 3. **Angry → Sad:** Similar furrowed brow patterns
 4. **Neutral → Sad/Angry:** Ambiguous neutral faces
 
----
 
 ## 6. Model Strengths
 
@@ -221,9 +210,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 5. **Learning Rate Schedule**
    - Aggressive decay enabled fine-grained optimization
    - Each LR drop produced measurable improvements
-
----
-
 ## 7. Model Limitations
 
 ### ⚠️ Areas for Improvement
@@ -244,8 +230,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
    - FER2013 known for label noise (~8-10% mislabeled)
    - Some expressions ambiguous even for human annotators
 
----
-
 ## 8. Comparison to Baseline
 
 ### Your Model vs Previous Version
@@ -262,8 +246,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 - Better handling of minority classes
 - Improved generalization (TTA)
 - More stable training (label smoothing)
-
----
 
 ## 9. Recommendations for Further Improvement
 
@@ -299,8 +281,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
    - Train simultaneously on facial landmarks + emotions
    - Auxiliary tasks improve feature representations
 
----
-
 ## 10. Deployment Considerations
 
 ### Production Readiness Assessment
@@ -326,8 +306,6 @@ This report analyzes the training and performance of a ResNet-18 based facial ex
 - ❌ Safety-critical fear detection (security, therapy)
 - ❌ Individual diagnostic applications (too many errors)
 - ❌ High-stakes decision making (legal, medical)
-
----
 
 ## 11. Conclusion
 
@@ -362,8 +340,6 @@ Your facial expression recognition model achieved **64.70% test accuracy**, repr
 
 Following the high-priority recommendations should yield **68-72% test accuracy**, making the model suitable for a broader range of real-world applications.
 
----
-
 ## Appendix: Technical Specifications
 
 **Hardware:** CUDA-enabled GPU (Google Colab)  
@@ -376,8 +352,6 @@ Following the high-priority recommendations should yield **68-72% test accuracy*
 - Saved checkpoint: `best_fer_improved.pth`
 - Training curves: `training_metrics.png`
 - Confusion matrix: `confusion_matrix.png`
-
----
 
 *Report Generated: Post-Training Analysis*  
 *Model Version: ResNet-18 with TTA*  
