@@ -170,7 +170,7 @@ class ImageEmotionDetector:
 def main():
     parser = argparse.ArgumentParser(description='Emotion detection from images')
     parser.add_argument('--model', type=str,
-                       default='../best_fer_resnet18.pth',
+                       default='C:/Users/PC/Desktop/yr3/Artificial intelligence/projects/ml_project/machine_learning/src/best_fer_resnet18.pth',
                        help='Path to trained model')
     parser.add_argument('--image', type=str,
                        help='Path to single image')

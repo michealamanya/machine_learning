@@ -5,9 +5,7 @@ import cv2
 import sys
 from pathlib import Path
 
-print("="*60)
 print("TESTING EMOTION DETECTOR SETUP")
-print("="*60)
 
 # Test 1: Check imports
 print("\n[1/5] Testing imports...")
@@ -44,7 +42,7 @@ else:
 
 # Test 4: Check model file
 print("\n[4/5] Checking for trained model...")
-model_path = Path("../best_fer_resnet18.pth")
+model_path = Path("C:/Users/PC/Desktop/yr3/Artificial intelligence/projects/ml_project/machine_learning/src/best_fer_resnet18.pth")
 if model_path.exists():
     print(f"✅ Model found: {model_path}")
     checkpoint = torch.load(model_path, map_location='cpu')
